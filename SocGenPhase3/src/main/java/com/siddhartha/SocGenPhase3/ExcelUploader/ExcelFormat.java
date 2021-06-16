@@ -6,7 +6,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="Temp_Data_Collector")
+@Table(name="temp_empty_ignore_it")
 public class ExcelFormat {
 	
 	@Id

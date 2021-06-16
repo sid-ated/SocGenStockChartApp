@@ -35,9 +35,7 @@ public class StocksEntity {
 	@JoinColumn(name="stock_exchange_id")
 	private StockExchangeEntity stockExchange;
 	
-	StocksEntity(){
-		
-	}
+
 
 	public int getId() {
 		return id;
@@ -95,6 +93,11 @@ public class StocksEntity {
 				+ company + ", stockExchange=" + stockExchange + "]";
 	}
 
+	public StocksEntity() {
+		super();
+	}
+
+	
 	
 
 }
