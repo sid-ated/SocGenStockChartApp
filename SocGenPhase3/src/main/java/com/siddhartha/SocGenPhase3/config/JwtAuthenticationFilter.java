@@ -37,7 +37,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 		
 		if(reqTokenHeader!=null && reqTokenHeader.startsWith("Bearer ")) {
 			jwtToken = reqTokenHeader.substring(7);
-			
+			System.out.println(jwtToken + " HELLO ");
 			try {
 				username = this.jwtUtil.getUsernameFromToken(jwtToken);
 			}catch(Exception e) {
@@ -54,7 +54,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter{
 				usernamePasswordAuthenticationToken.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));
 				
 				SecurityContextHolder.getContext().setAuthentication(usernamePasswordAuthenticationToken);
-				
+				//System.out.println(username + "HELLO SHUKLA JI jjj");
 			}else {
 				System.out.println("token galt hai");
 			}

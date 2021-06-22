@@ -19,7 +19,7 @@ public class PlannedIposEntity {
 	private int id;
 	
 	@Column(name="Ipo_Price", nullable=false)
-	private float Price;
+	private float price;
 	
 	@Column(name="Total_no_of_ipos", nullable=false)
 	private int totalNumber;
@@ -51,11 +51,11 @@ public class PlannedIposEntity {
 	}
 
 	public float getPrice() {
-		return Price;
+		return price;
 	}
 
 	public void setPrice(float price) {
-		Price = price;
+		this.price = price;
 	}
 
 	public int getTotalNumber() {
@@ -100,7 +100,7 @@ public class PlannedIposEntity {
 
 	@Override
 	public String toString() {
-		return "PlannedIposEntity [id=" + id + ", Price=" + Price + ", totalNumber=" + totalNumber + ", timestamp="
+		return "PlannedIposEntity [id=" + id + ", Price=" + price + ", totalNumber=" + totalNumber + ", timestamp="
 				+ timestamp + ", remarks=" + remarks + ", company=" + company + ", stockExchange=" + stockExchange
 				+ "]";
 	}

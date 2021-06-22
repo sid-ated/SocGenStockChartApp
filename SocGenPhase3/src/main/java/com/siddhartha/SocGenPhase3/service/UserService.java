@@ -18,7 +18,7 @@ public class UserService implements UserDetailsService{
 		
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		final UserEntity user = userRepo.findByName(username);
+		final UserEntity user = userRepo.findByUsername(username);
 		if(user==null) {
 			throw new UsernameNotFoundException("Username doesn't exist");
 		}
@@ -28,18 +28,18 @@ public class UserService implements UserDetailsService{
 	}
 
 	public UserEntity getUserDetail(String name) {
-		return userRepo.findByName(name);
+		return userRepo.findByUsername(name);
 	}
 	
 	public void updateUserDetail(UserEntity user) {
-		UserEntity existingUser = userRepo.findByName(user.getName());
+		UserEntity existingUser = userRepo.findByUsername(user.getUsername());
 		existingUser.setPassword(user.getPassword());
 		existingUser.setMobile(user.getMobile());
-		existingUser.setName(user.getName());
+		existingUser.setUsername(user.getUsername());
 	}
 	
 	public void registerUser(UserEntity user) throws Exception {
-		if(userRepo.findByName(user.getName())!=null) {
+		if(userRepo.findByUsername(user.getUsername())!=null) {
 			throw new Exception("User Already Exist!");
 		}
 		else userRepo.save(user);

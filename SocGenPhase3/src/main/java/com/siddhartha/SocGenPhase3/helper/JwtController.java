@@ -7,6 +7,7 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -28,7 +29,7 @@ public class JwtController {
 	private JwtUtil jwtUtil;
 	
 	
-	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@RequestMapping(value = "/login", method=RequestMethod.POST)
 	public ResponseEntity<?> generateToken(@RequestBody JwtRequest jwtRequest) throws Exception{
 		System.out.println(jwtRequest);
@@ -52,6 +53,7 @@ public class JwtController {
 		return ResponseEntity.ok(new JwtResponse(token));
 	}
 	
+	@CrossOrigin(origins = "http://localhost:3000")
 	@RequestMapping(value = "/register", method=RequestMethod.POST)
 	public ResponseEntity<?> generateToken(@RequestBody UserEntity newUser) throws Exception{
 		System.out.println(newUser);
@@ -59,7 +61,7 @@ public class JwtController {
 		us.registerUser(newUser);
 		try {
 			
-			this.authenticationManagaer.authenticate(new UsernamePasswordAuthenticationToken(newUser.getName(), newUser.getPassword()));
+			this.authenticationManagaer.authenticate(new UsernamePasswordAuthenticationToken(newUser.getUsername(), newUser.getPassword()));
 			
 		} catch (UsernameNotFoundException e) {
 			e.printStackTrace();
@@ -69,7 +71,7 @@ public class JwtController {
 			throw new Exception("Galat hai bhai");
 		}
 		
-		UserDetails userDetails = this.us.loadUserByUsername(newUser.getName());
+		UserDetails userDetails = this.us.loadUserByUsername(newUser.getUsername());
 		
 		String token = this.jwtUtil.generateToken(userDetails);
 		System.out.println(token);

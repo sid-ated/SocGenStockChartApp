@@ -6,6 +6,6 @@ import com.siddhartha.SocGenPhase3.entity.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Integer> {
 	
-	public UserEntity findByName(String name);
+	public UserEntity findByUsername(String name);
 	//public UserEntity findByEmail(String email);
 }

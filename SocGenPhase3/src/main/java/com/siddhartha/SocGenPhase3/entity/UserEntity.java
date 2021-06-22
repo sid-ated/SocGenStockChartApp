@@ -17,7 +17,7 @@ public class UserEntity {
 	private int id;
 	
 	@Column(name = "user_name", nullable=false)
-	private String name;
+	private String username;
 	
 	@Column(name = "password", nullable=false)
 	private String password;
@@ -46,12 +46,12 @@ public class UserEntity {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getUsername() {
+		return username;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	public String getPassword() {
@@ -95,9 +95,9 @@ public class UserEntity {
 	}
 
 	
-	public UserEntity(String name, String password, String email, String mobile, String isAdmin, Boolean confirmed) {
+	public UserEntity(String username, String password, String email, String mobile, String isAdmin, Boolean confirmed) {
 		super();
-		this.name = name;
+		this.username = username;
 		this.password = password;
 		this.email = email;
 		this.mobile = mobile;
@@ -107,7 +107,7 @@ public class UserEntity {
 
 	@Override
 	public String toString() {
-		return "UserEntity [id=" + id + ", name=" + name + ", password=" + password + ", email=" + email + ", mobile="
+		return "UserEntity [id=" + id + ", name=" + username + ", password=" + password + ", email=" + email + ", mobile="
 				+ mobile + ", isAdmin=" + isAdmin + ", confirmed=" + confirmed + "]";
 	}
 	
